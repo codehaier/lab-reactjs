@@ -1,4 +1,6 @@
 import React from "react";
+import ColorBox from "./components/ColorBox";
+import Counter from "./components/Counter";
 import AlbumFeature from "./features/Album";
 
 function App() {
@@ -6,7 +8,11 @@ function App() {
     <div className="App">
       {/* <TodoFeature /> */}
 
-      <AlbumFeature />
+      {/* <AlbumFeature /> */}
+
+      <ColorBox />
+
+      <Counter />
     </div>
   );
 }
