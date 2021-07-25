@@ -41,6 +41,16 @@ function TodoFeature(props) {
     setTodoList(newTodoList);
   };
 
+  const handleRemoveClick = (todo) => {
+    console.log(todo);
+    const index = todoList.findIndex((x) => x.id === todo.id);
+    if (index < 0) return;
+
+    const newTodoList = [...todoList];
+    newTodoList.splice(index, 1);
+    setTodoList(newTodoList);
+  };
+
   const handleShowAllClick = () => {
     setFilteredStatus("all");
   };
@@ -62,7 +72,11 @@ function TodoFeature(props) {
   return (
     <div>
       <h3>Todo List</h3>
-      <TodoList todoList={renderedTodoList} onTodoClick={handleTodoClick} />
+      <TodoList
+        todoList={renderedTodoList}
+        onTodoClick={handleTodoClick}
+        onRemoveClick={handleRemoveClick}
+      />
 
       <div>
         <button onClick={handleShowAllClick}>Show All</button>

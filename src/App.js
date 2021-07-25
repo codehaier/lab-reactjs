@@ -1,11 +1,11 @@
 import React from "react";
-import ColorBox from "./components/ColorBox";
 import "./App.scss";
+import TodoFeature from "./features/Todo";
 
 function App() {
   return (
     <div className="app">
-      <ColorBox />
+      <TodoFeature />
     </div>
   );
 }

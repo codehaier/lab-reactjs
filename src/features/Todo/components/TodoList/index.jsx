@@ -6,18 +6,26 @@ import "./styles.scss";
 TodoList.propTypes = {
   todoList: PropTypes.array,
   onTodoClick: PropTypes.func,
+  onRemoveClick: PropTypes.func,
 };
 
 TodoList.defaultProps = {
   todoList: [],
   onTodoClick: null,
+  onRemoveClick: null,
 };
 
-function TodoList({ todoList, onTodoClick }) {
+function TodoList({ todoList, onTodoClick, onRemoveClick }) {
   const handleTodoClick = (todo, idx) => {
     if (!onTodoClick) return;
 
     onTodoClick(todo, idx);
+  };
+
+  const handleRemoveClick = (todo) => {
+    if (!onRemoveClick) return;
+
+    onRemoveClick(todo);
   };
   return (
     <ul className="todo-list">
@@ -28,9 +36,11 @@ function TodoList({ todoList, onTodoClick }) {
             "todo-item": true,
             completed: todo.status === "completed",
           })}
-          onClick={() => handleTodoClick(todo, idx)}
         >
-          {todo.title}
+          <p className="todo-name" onClick={() => handleTodoClick(todo, idx)}>
+            {todo.title}
+          </p>
+          <button onClick={() => handleRemoveClick(todo)}>Remove</button>
         </li>
       ))}
     </ul>
